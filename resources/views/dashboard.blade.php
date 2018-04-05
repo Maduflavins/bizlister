@@ -8,13 +8,23 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
+                    <h3>Your Listings</h3>
+                    @if(count($listings))
+                        <table class="table table-dark">
+                            <tr>
+                                <th>Company</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            @foreach($listings as $listing)
+                            <tr>
+                                <td>{{$listing->name}}</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            @endforeach
+                        </table>
                     @endif
-
-                    You are logged in!
                 </div>
             </div>
         </div>
