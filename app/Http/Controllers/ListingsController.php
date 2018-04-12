@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\listing;
 
 class ListingsController extends Controller
 {
@@ -23,7 +24,7 @@ class ListingsController extends Controller
      */
     public function create()
     {
-        //
+        return view('createlisting');
     }
 
     /**
@@ -34,7 +35,26 @@ class ListingsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'email'
+        ]);
+
+        // Create Listing
+
+        $listing = new Listing;
+        $listing->name = $request->input('name');
+        $listing->email = $request->input('email');
+        $listing->website = $request->input('website');
+        $listing->CAC = $request->input('CAC');
+        $listing->address = $request->input('address');
+        $listing->phone = $request->input('phone');
+        $listing->name = $request->input('bio');
+        $listing->user_id = auth()->user()->id;
+
+        $listing->save();
+
+        return redirect('/dashboard')->with('success', 'buisness added');
     }
 
     /**
@@ -67,8 +87,30 @@ class ListingsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        $listing = Listing::find($id);
+        return view('editlisting')->with('listing', $listing);
+
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'email'
+        ]);
+
+        // Create Listing
+
+        $listing = Listing::find($id);
+        $listing->name = $request->input('name');
+        $listing->email = $request->input('email');
+        $listing->website = $request->input('website');
+        $listing->CAC = $request->input('CAC');
+        $listing->address = $request->input('address');
+        $listing->phone = $request->input('phone');
+        $listing->name = $request->input('bio');
+        $listing->user_id = auth()->user()->id;
+
+        $listing->save();
+
+        return redirect('/dashboard')->with('success', 'buisness listing updated');
     }
 
     /**
