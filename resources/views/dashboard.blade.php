@@ -20,7 +20,7 @@
                                 <td>{{$listing->name}}</td>
                                 <td><a class="float-right btn btn-default" href="/listings/{{$listing->id}}/edit">Edit</a></td>
                                 <td>
-                                {!!Form::open(['action' => ['ListingsController@destroy', $listing->id],'method' => 'POST' 'class'=>'float-left', 'onsubmit'=>'return confirm("are you sure")'])!!}
+                                {!!Form::open(['action' => ['ListingsController@destroy', $listing->id],'method' => 'POST', 'class'=>'float-left', 'onsubmit'=>'return confirm("are you sure")'])!!}
                                     {{Form::hidden('_method', 'DELETE')}}
                                     {{Form::bsSubmit('delete', ['class'=>'btn btn-danger'])}}
                                 {!!Form::close()!!}

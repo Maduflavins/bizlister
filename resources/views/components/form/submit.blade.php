@@ -1,3 +1,3 @@
 <div>
-    {{Form::submit($value, $attributes)}}
+    {{Form::submit('delete', $attributes)}}
 </div>

@@ -14,7 +14,8 @@
                 <div class="card-body">
                   {!!Form::open(['action' => 'ListingsController@store','method' => 'POST'])!!}
                     {{Form::bsText('name', '', ['placeholder'=> 'Business Name'])}}
-                    {{Form::bsText('CAC', '', ['placeholder'=> 'Business CAC number_format'])}}
+                    {{Form::bsText('cac', '', ['placeholder'=> 'Business CAC number'])}}
+                    {{Form::bsText('type', '', ['placeholder'=> 'Business CAC business type'])}}
                     {{Form::bsText('email', '', ['placeholder'=> 'Business Email'])}}
                     {{Form::bsText('website', '', ['placeholder'=> 'Company website'])}}
                     {{Form::bsText('address', '', ['placeholder'=> 'Company address'])}}
